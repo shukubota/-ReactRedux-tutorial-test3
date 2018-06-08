@@ -1,1 +1,1 @@
-# -ReactRedux-tutorial-test3
+test3の環境構築済レポジトリ 

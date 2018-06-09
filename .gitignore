@@ -1,1 +1,4 @@
 log/*
+node_modules/
+tmp/
+public/index.min.js

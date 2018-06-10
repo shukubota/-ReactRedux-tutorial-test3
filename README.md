@@ -2,7 +2,7 @@ react課題3
 
 npm install
 
-npm run startでhttp://localhost:3150　にnodeサーバ
+npm run startでhttp://localhost:3150 にnodeサーバ
 
 webpack --watch でjsのコンパイル(watch モードon)
 

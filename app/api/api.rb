@@ -1,4 +1,15 @@
 class API < Grape::API
   format :json
-  mount Users
+
+  resource :user do
+    desc 'POST /api/user/signin'
+    params do
+      requires :user
+    end
+    post '/signin' do
+      binding.pry
+      error!('Cannot find user', 401) unless user = User.find_by(email: params[:user][:email], password: params[:user][:password])
+      present user, with: API::UserEntity
+    end
+  end
 end

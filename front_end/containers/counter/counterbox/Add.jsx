@@ -7,12 +7,17 @@ class Add extends Component {
   }
 
   render() {
-    const count = this.props.count;
-    const countHistory = this.props.countHistory;
+    const { count, countHistory } = this.props;
+    console.log(this.props);
     return (
       <div className="count_box">
         ADD
-        <button type="button" onClick={() => {this.props.addCount(count, countHistory)}}>
+        <button
+          type="button"
+          onClick={() => {
+            this.props.countUp(count, countHistory);
+          }}
+        >
           足すにゃ！
         </button>
         <button type="button" onClick={() => {this.props.toggleButton(false)}}>

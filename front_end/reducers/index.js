@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const initialState = {
   count: 0,
-  history: [],
+  countHistory: [],
 };
 
 function fetchUserReducers(state = {}, action) {
@@ -29,11 +29,11 @@ function getTime() {
 function handleCount(state = initialState, action) {
   switch (action.type) {
     case 'ADD': {
-      const thisHistory = ['ADD', getTime()];
+      const thisHistory = `${getTime()}足したにゃ`;
       return {
         ...state,
         count: action.payload.count + 1,
-        history: [action.payload.history, thisHistory],
+        countHistory: action.payload.countHistory.concat([thisHistory]),
       };
     }
     default:

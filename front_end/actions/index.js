@@ -29,3 +29,11 @@ export const asyncSignIn = user => (dispatch) => {
       console.log(err);
     });
 };
+
+export const addCount = (count, countHistory) => ({
+  type: 'ADD',
+  payload: {
+    count,
+    countHistory,
+  },
+});

@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import { asyncSignIn } from '../actions/index';
+import { asyncSignIn, addCount } from '../actions/index';
 
 import Signin from './Signin';
 import CountBox from './counter/counterbox/CountBox';
@@ -45,14 +45,17 @@ class Auth extends Component {
 
 const mapStateToProps = state => (
   {
-    current_user: state,
+    count: state.handleCount.count,
+    countHistory: state.handleCount.countHistory,
   }
 );
 
 const mapDispatchToProps = dispatch => ({
-  setUser(user) {
+  fetchUser(user) {
     dispatch(asyncSignIn(user));
-    // dispatch(fetchUser(user));
+  },
+  countUp(count, countHistory) {
+    dispatch(addCount(count, countHistory));
   },
 });
 

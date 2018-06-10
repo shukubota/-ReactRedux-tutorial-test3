@@ -27,7 +27,7 @@ export default class Auth extends Component {
     e.preventDefault();
     console.log(this.state.user);
     console.log(this.props);
-    this.props.setUser(this.state.user);
+    this.props.fetchUser(this.state.user);
   }
   render() {
     const { user } = this.state;

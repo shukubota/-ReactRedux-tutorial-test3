@@ -4,12 +4,7 @@ import Add from './Add';
 
 
 export default class CountBox extends Component {
-  constructor(props){
-    super(props)
-  }
-
   render() {
-    console.log(this.props);
     const props = Object.assign(
       {},
       { ...this.props },
@@ -21,10 +16,15 @@ export default class CountBox extends Component {
         <Link to='/history'>
           検索履歴一覧
         </Link>
-        <button type="button" onClick={() => { this.props.signOut() }} >
+        <button
+          type="button"
+          onClick={() => {
+            this.props.signOut();
+          }}
+        >
           ログアウト
         </button>
       </div>
-    )
+    );
   }
 }

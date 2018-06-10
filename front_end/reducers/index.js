@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 const initialState = {
   count: 0,
   countHistory: [],
+  isAddButton: true,
 };
 
 function fetchUserReducers(state = {}, action) {
@@ -36,6 +37,27 @@ function handleCount(state = initialState, action) {
         countHistory: action.payload.countHistory.concat([thisHistory]),
       };
     }
+    case 'REDUCE': {
+      const thisHistory = `${getTime()}引いたにゃ`;
+      return {
+        ...state,
+        count: action.payload.count - 1,
+        countHistory: action.payload.countHistory.concat([thisHistory]),
+      };
+    }
+    default:
+      return state;
+  }
+}
+
+function toggleButton(state = initialState, action) {
+  switch (action.type) {
+    case 'TOGGLE': {
+      return {
+        ...state,
+        isAddButton: !action.payload.isAddButton,
+      };
+    }
     default:
       return state;
   }
@@ -44,6 +66,7 @@ function handleCount(state = initialState, action) {
 const rootReducers = combineReducers({
   fetchUserReducers,
   handleCount,
+  toggleButton,
 });
 
 export default rootReducers;

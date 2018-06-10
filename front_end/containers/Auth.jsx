@@ -3,16 +3,13 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import { asyncSignIn } from '../actions/index';
+import { asyncSignIn, addCount, reduceCount, toggleButton } from '../actions/index';
 
 import Signin from './Signin';
 import CountBox from './counter/counterbox/CountBox';
+import History from './counter/History';
 
 class Auth extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     if (!localStorage.getItem('isAuthenticated')) {
       this.props.history.push('/signin');
@@ -37,6 +34,7 @@ class Auth extends Component {
         <Switch>
           <Route exact path="/signin" render={() => (<Signin {...props} />)} />
           <Route exact path="/" render={() => (<CountBox {...props} />)} />
+          <Route exact path="/history" render={() => (<History {...props} />)} />
         </Switch>
       </div>
     );
@@ -45,14 +43,24 @@ class Auth extends Component {
 
 const mapStateToProps = state => (
   {
-    current_user: state,
+    count: state.handleCount.count,
+    countHistory: state.handleCount.countHistory,
+    isAddButton: state.toggleButton.isAddButton,
   }
 );
 
 const mapDispatchToProps = dispatch => ({
-  setUser(user) {
+  fetchUser(user) {
     dispatch(asyncSignIn(user));
-    // dispatch(fetchUser(user));
+  },
+  countUp(count, countHistory) {
+    dispatch(addCount(count, countHistory));
+  },
+  countDown(count, countHistory) {
+    dispatch(reduceCount(count, countHistory));
+  },
+  toggleButton(isAddButton) {
+    dispatch(toggleButton(isAddButton));
   },
 });
 

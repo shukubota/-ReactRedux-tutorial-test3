@@ -23,9 +23,31 @@ export const asyncSignIn = user => (dispatch) => {
       console.log(res);
       dispatch(signIn(res.body));
       localStorage.setItem('isAuthenticated', true);
+      localStorage.setItem('user_name', res.body.user.name);
       window.location = ('/')
     })
     .catch((err) => {
       console.log(err);
     });
 };
+
+export const addCount = (count, countHistory) => ({
+  type: 'ADD',
+  payload: {
+    count,
+    countHistory,
+  },
+});
+
+export const reduceCount = (count, countHistory) => ({
+  type: 'REDUCE',
+  payload: {
+    count,
+    countHistory,
+  },
+});
+
+export const toggleButton = isAddButton => ({
+  type: 'TOGGLE',
+  payload: { isAddButton },
+});

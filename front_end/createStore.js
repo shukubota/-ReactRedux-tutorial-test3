@@ -12,6 +12,7 @@ import reducers from './reducers/index';
 
 export const history = createHistory();
 
+// router使ったらmiddleware routerMiddlewareほぼ必須
 const store = createStore(
   reducers,
   applyMiddleware(

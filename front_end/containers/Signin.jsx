@@ -1,7 +1,4 @@
-import React, { Component } from 'react'
-import ReactDom from 'react-dom'
-
-import Style from './App.css'
+import React, { Component } from 'react';
 
 export default class Auth extends Component {
   constructor(props) {
@@ -33,15 +30,30 @@ export default class Auth extends Component {
         <h1>サインイン</h1>
         <div>
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <input type="text" placeholder="メールアドレス" value={user.email} onChange={this.handleChange.bind(this, 'email')}/>
-            <input type="password" placeholder="パスワード" value={user.password} onChange={this.handleChange.bind(this, 'password')}/>
-            <input type="submit" name="commit" value="ログイン" data-disable-with="ログイン"/>
+            <input
+              type="text"
+              placeholder="メールアドレス"
+              value={user.email}
+              onChange={this.handleChange.bind(this, 'email')}
+            />
+            <input
+              type="password"
+              placeholder="パスワード"
+              value={user.password}
+              onChange={this.handleChange.bind(this, 'password')}
+            />
+            <input
+              type="submit"
+              name="commit"
+              value="ログイン"
+              data-disable-with="ログイン"
+            />
           </form>
           <p>
             test@kmail.com: aaaaa
           </p>
         </div>
-       </div>
-    )
+      </div>
+    );
   }
 }

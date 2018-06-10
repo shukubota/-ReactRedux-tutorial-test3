@@ -1,27 +1,29 @@
+import { combineReducers } from 'redux';
+
 const initialState = {
-  user: {
-    email: '',
-    password: '',
-  },
+  count: 0,
   history: [],
-  count: '',
-  task: '',
-  tasks: [],
 };
 
-export default function rootReducer(state = initialState, action) {
+function fetchUserReducers(state = {}, action) {
   switch (action.type) {
-    case 'INPUT_TASK':
+    case 'SIGN_IN':
       return {
         ...state,
-        task: action,
+        user: action.payload.user,
       };
-    case 'ADD_TASK':
+    case 'REQUEST_FETCH_USER':
       return {
         ...state,
-        tasks: state.tasks.concat([action.payload.task]),
       };
     default:
       return state;
   }
 }
+
+
+const rootReducers = combineReducers({
+  fetchUserReducers,
+});
+
+export default rootReducers;

@@ -1,24 +1,25 @@
 import {
-  createStore as reduxCreateStore,
-  combineReducers,
+  createStore,
   applyMiddleware,
+  combineReducers,
 } from 'redux';
-
-import { routerReducer, routerMiddleware } from 'react-router-redux';
-import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import tasksReducer from './reducers/index';
+import logger from 'redux-logger';
+import { routerReducer, routerMiddleware } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 
-export default function createStore(history) {
-  return reduxCreateStore(
-    combineReducers({
-      tasks: tasksReducer,
-      router: routerReducer,
-    }),
-    applyMiddleware(
-      routerMiddleware(history),
-      logger,
-      thunk,
-    ),
-  );
-}
+import reducers from './reducers/index';
+
+
+export const history = createHistory();
+
+const store = createStore(
+  reducers,
+  applyMiddleware(
+    routerMiddleware(history),
+    logger,
+    thunk,
+  ),
+);
+
+export default store;

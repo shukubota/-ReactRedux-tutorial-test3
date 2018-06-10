@@ -15,7 +15,6 @@ export default class Auth extends Component {
   }
 
   handleChange(prop, e) {
-    console.log(this.state);
     const { user } = this.state;
     user[prop] = e.target.value;
     this.setState({
@@ -25,13 +24,10 @@ export default class Auth extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.user);
-    console.log(this.props);
     this.props.fetchUser(this.state.user);
   }
   render() {
     const { user } = this.state;
-    console.log(this.props);
     return (
       <div>
         <h1>サインイン</h1>

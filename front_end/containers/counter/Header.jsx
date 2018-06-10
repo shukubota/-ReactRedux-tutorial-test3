@@ -1,10 +1,11 @@
 import React from 'react';
 
 const Header = (props) => {
-  console.log(props)
+  const userName = localStorage.getItem('user_name');
   return (
     <div>
-      count number: { props.count }
+      <p>count number: { props.count }</p>
+      <p>ユーザーネーム: { userName }</p>
     </div>
   );
 };

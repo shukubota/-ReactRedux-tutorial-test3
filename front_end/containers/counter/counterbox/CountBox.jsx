@@ -6,7 +6,6 @@ import Header from '../Header';
 
 export default class CountBox extends Component {
   render() {
-    console.log(this.props);
     const { count, countHistory, isAddButton } = this.props;
     const props = Object.assign(
       {},

@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 const initialState = {
   user: {
     email: '',
@@ -9,7 +11,7 @@ const initialState = {
   tasks: [],
 };
 
-export default function rootReducer(state = initialState, action) {
+function countReducers(state = initialState, action) {
   switch (action.type) {
     case 'INPUT_TASK':
       return {
@@ -25,3 +27,21 @@ export default function rootReducer(state = initialState, action) {
       return state;
   }
 }
+
+function userReducers(state = initialState, action) {
+  switch (action.type) {
+    case 'SIGN_IN':
+      return {
+        ...state,
+      };
+    default:
+      return state;
+  }
+}
+
+const rootReducers = combineReducers({
+  countReducers,
+  userReducers,
+});
+
+export default rootReducers;

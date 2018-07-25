@@ -6,5 +6,4 @@ npm run startでhttp://localhost:3150 にnodeサーバ
 
 webpack --watch でjsのコンパイル(watch モードon)
 
-rails s で http://localhost:8080 にrails apiサーバ
-
+rails s で http://localhost:8080 にrails apiサーバ起動
